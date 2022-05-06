@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "gungill";
+  src: local("gungill"), url(./font/gunhill.otf) format("opentype");
+  src: local("gungill"), url(./font/gunhill.ttf) format("opentype");
+  src: local("gungill"), url(./font/gunhill.woff) format("opentype");
+}
+
+.card:hover .floating {
+  display: block;
+}
+
+.floating {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  right: 40%;
+  display: none;
+}

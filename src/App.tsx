@@ -2,16 +2,16 @@ import ConfigRoutes from "routes";
 import ThemeConfig from "theme";
 import GlobalStyles from "theme/GlobalStyles";
 import { BrowserRouter } from "react-router-dom";
-import GlobalProvider from "context";
+import BeerProvider from "context";
 
 const App = () => {
   return (
     <ThemeConfig>
       <GlobalStyles />
       <BrowserRouter>
-        <GlobalProvider>
+        <BeerProvider>
           <ConfigRoutes />
-        </GlobalProvider>
+        </BeerProvider>
       </BrowserRouter>
     </ThemeConfig>
   );

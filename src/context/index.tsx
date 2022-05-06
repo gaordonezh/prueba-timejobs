@@ -1,11 +1,16 @@
-import { createContext, ReactNode, useContext } from "react";
-import { ContextProps } from "interfaces";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { ContextProps, BeerProps, OrderProps } from "interfaces";
 
-const Global = createContext({} as ContextProps);
+const Beer = createContext({} as ContextProps);
 
-export const useGlobalContext = () => useContext(Global);
+export const useBeerContext = () => useContext(Beer);
 
-const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  return <Global.Provider value={{}}>{children}</Global.Provider>;
+const BeerProvider = ({ children }: { children: ReactNode }) => {
+  const [beerList, setBeerList] = useState<Array<BeerProps>>([]);
+  const [order, setOrder] = useState<Array<OrderProps>>([]);
+
+  return (
+    <Beer.Provider value={{ beerList, setBeerList, order, setOrder }}>{children}</Beer.Provider>
+  );
 };
-export default GlobalProvider;
+export default BeerProvider;
