@@ -22,7 +22,7 @@ const routes: Array<PropsRoutes> = [
         element: Products,
       },
       {
-        path: "product/:productId",
+        path: "product/:beerId",
         element: Details,
       },
       {

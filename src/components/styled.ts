@@ -1,8 +1,14 @@
-import { Button, Card, CardHeader, Typography } from "@mui/material";
+import { Box, Button, Card, CardHeader, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Square, CropSquare } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 
 export const ButtonStyled = styled(Button)(({ theme }) => ({
+  borderRadius: 0,
+  textTransform: "uppercase",
+}));
+
+export const LoadingButtonStyled = styled(LoadingButton)(({ theme }) => ({
   borderRadius: 0,
   textTransform: "uppercase",
 }));
@@ -40,4 +46,11 @@ export const ContainerImgStyled = styled("figure")(({ theme }) => ({
 export const ImgStyled = styled("img")(({ theme }) => ({
   maxHeight: "100%",
   maxWidth: "100%",
+}));
+
+export const HeaderStyled = styled(Box)(({ theme }) => ({
+  position: "sticky",
+  top: 0,
+  zIndex: 2000,
+  backgroundColor: "#fff",
 }));

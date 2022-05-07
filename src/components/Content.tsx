@@ -9,7 +9,7 @@ const Content = forwardRef(
         <Grid item sx={{ my: 5 }}>
           <Stack alignItems="center">
             <Breadcrumbs aria-label="breadcrumb">
-              <Typography color="text.primary">Inicio</Typography>
+              <Typography color="text.primary">Vinos</Typography>
               <Typography color="text.secondary">{helper}</Typography>
             </Breadcrumbs>
             <TextStyled variant="h1">{title}</TextStyled>

@@ -1,29 +1,9 @@
 import { Grid, Skeleton, Box, Stack, Alert, AlertTitle } from "@mui/material";
 import { useBeerContext } from "context";
-import { BeerProps } from "interfaces";
 import ProductListItem from "./ProductListItem";
 
 const ProductList = () => {
-  const { beerList, setOrder, order } = useBeerContext();
-
-  const addToCart = (data: BeerProps) => () => {
-    const index = order.findIndex((item) => item.id === data.id);
-
-    if (index >= 0) {
-      order[index].quantity = (order[index].quantity ?? 0) + 1;
-    } else {
-      order.push({
-        id: data.id,
-        name: data.name,
-        tagline: data.tagline,
-        price: data.price,
-        quantity: 1,
-        image_url: data.image_url,
-      });
-    }
-
-    setOrder([...order]);
-  };
+  const { beerList, addToCart } = useBeerContext();
 
   return (
     <Grid container spacing={2}>

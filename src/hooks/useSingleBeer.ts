@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import { getBeers } from "requests";
+import { getBeerById } from "requests";
 import { BeerProps } from "interfaces";
 import getPrice from "utils/getPrice";
 
-const useBeers = () => {
-  const [beers, setBeers] = useState<Array<BeerProps>>([]);
+const useSingleBeer = (beerId: string) => {
+  const [singleBeer, setSingleBeer] = useState<BeerProps>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    obtainBeers();
+    obtainSingleBeer();
   }, []);
 
-  const obtainBeers = async () => {
+  const obtainSingleBeer = async () => {
     try {
       setLoading(true);
       setError(false);
-      const res = await getBeers();
+      const res = await getBeerById(beerId);
       const result = res.map((item: BeerProps) => ({ ...item, price: getPrice(item.id) }));
-
-      setBeers([...result]);
+      setSingleBeer(result[0]);
     } catch (error) {
       setError(true);
     } finally {
@@ -27,7 +26,7 @@ const useBeers = () => {
     }
   };
 
-  return { loading, error, beers };
+  return { loading, error, singleBeer };
 };
 
-export default useBeers;
+export default useSingleBeer;

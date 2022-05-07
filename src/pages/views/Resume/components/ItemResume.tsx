@@ -14,8 +14,17 @@ import fCurrency from "utils/fCurrency";
 import { Add, Close, HorizontalRule } from "@mui/icons-material";
 import { OrderProps } from "interfaces";
 
-const ItemResume = ({ item }: { item: OrderProps }) => {
-  console.log(item);
+const ItemResume = ({
+  item,
+  index,
+  handleDelete,
+  handleChange,
+}: {
+  item: OrderProps;
+  index: number;
+  handleDelete: Function;
+  handleChange: Function;
+}) => {
   return (
     <CardStyled variant="outlined">
       <Box p={1}>
@@ -47,14 +56,23 @@ const ItemResume = ({ item }: { item: OrderProps }) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <IconButton color="error" size="small">
+                      <IconButton
+                        color="error"
+                        disabled={Number(item.quantity) === 1}
+                        size="small"
+                        onClick={() => handleChange(index, Number(item.quantity) - 1)}
+                      >
                         <HorizontalRule />
                       </IconButton>
                     </InputAdornment>
                   ),
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton color="success" size="small">
+                      <IconButton
+                        color="success"
+                        size="small"
+                        onClick={() => handleChange(index, Number(item.quantity) + 1)}
+                      >
                         <Add />
                       </IconButton>
                     </InputAdornment>
@@ -72,7 +90,7 @@ const ItemResume = ({ item }: { item: OrderProps }) => {
           </Grid>
           <Grid item xs={6} sm={3} md={2} lg={1}>
             <Stack alignItems="center" justifyContent="center" sx={{ height: "100%" }}>
-              <Fab color="error">
+              <Fab color="error" onClick={() => handleDelete(index)}>
                 <Close />
               </Fab>
             </Stack>

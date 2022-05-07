@@ -20,7 +20,7 @@ import { Fragment } from "react";
 
 const Filters = () => {
   return (
-    <CardStyled variant="outlined">
+    <CardStyled variant="outlined" sx={{ position: "sticky", top: 140 }}>
       <CardContent>
         <Stack direction="column" spacing={5}>
           <TextStyled variant="h3">BUSQUEDA PERSONALIZADA</TextStyled>

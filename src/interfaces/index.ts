@@ -22,7 +22,32 @@ export interface BeerProps {
   description?: string;
   image_url?: string;
   price?: number;
+  first_brewed?: string;
+  brewers_tips?: string;
+  boil_volume?: Units;
+  volume?: Units;
+  method?: {
+    fermentation: {
+      temp: Units;
+    };
+    twist: string;
+    mash_temp: Array<{
+      temp: Units;
+      duration: number;
+    }>;
+  };
+  ingredients?: {
+    yeast: string;
+    malt: Array<{ name: string; amount: Units }>;
+    hops: Array<{ name: string; amount: Units }>;
+  };
+  food_pairing?: Array<string>;
 }
+
+type Units = {
+  value: number;
+  unit: string;
+};
 
 export interface OrderProps {
   id?: number;
@@ -38,4 +63,5 @@ export interface ContextProps {
   setBeerList: Function;
   order: Array<OrderProps>;
   setOrder: Function;
+  addToCart: Function;
 }

@@ -28,6 +28,9 @@ export default function GlobalStyles() {
           width: "100%",
           height: "100%",
         },
+        a: {
+          textDecoration: "none",
+        },
         input: {
           "&[type=number]": {
             MozAppearance: "textfield",
@@ -56,44 +59,9 @@ export default function GlobalStyles() {
             color: theme.palette.text.disabled,
           },
         },
-
         img: { display: "block", maxWidth: "100%" },
-
-        // Lazy Load Img
-        ".blur-up": {
-          WebkitFilter: "blur(5px)",
-          filter: "blur(5px)",
-          transition: "filter 400ms, -webkit-filter 400ms",
-        },
-        ".blur-up.lazyloaded ": {
-          WebkitFilter: "blur(0)",
-          filter: "blur(0)",
-        },
-        ".ant-notification-notice-with-icon svg": {
-          fill: "#fff",
-        },
-        ".ant-notification-notice-success": {
-          backgroundColor: "#52c41a !important",
-          borderRadius: "5px !important",
-        },
-        ".ant-notification-notice-info": {
-          backgroundColor: "#1890ff !important",
-          borderRadius: "5px !important",
-        },
-        ".ant-notification-notice-error": {
-          backgroundColor: "#ff4d4f !important",
-          borderRadius: "5px !important",
-        },
-        ".ant-notification-notice-warning": {
-          backgroundColor: "#faad15 !important",
-          borderRadius: "5px !important",
-        },
-        ".ant-notification-notice-message": {
-          color: "#fff !important",
-          fontWeight: 600,
-        },
-        ".ant-notification-notice-description": {
-          color: "#eee",
+        ".MuiModal-root": {
+          zIndex: "9999",
         },
       }}
     />

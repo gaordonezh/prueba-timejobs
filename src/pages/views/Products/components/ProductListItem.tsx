@@ -9,11 +9,12 @@ import {
 import fCurrency from "utils/fCurrency";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { BeerProps } from "interfaces";
+import { Link } from "react-router-dom";
 
 const ProductListItem = ({ item, addToCart }: { item: BeerProps; addToCart: Function }) => (
   <Grid item xs={12} sm={6} md={4} lg={4} xl={3}>
     <CardStyled variant="outlined" className="card">
-      <CardActionArea>
+      <CardActionArea component={Link} to={{ pathname: `/product/${item.id}` }}>
         <CardHeaderStyled
           title={
             <TextStyled variant="h5" color="text.secondary" noWrap>

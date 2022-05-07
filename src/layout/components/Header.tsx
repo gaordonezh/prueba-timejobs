@@ -1,6 +1,6 @@
 import { ShoppingCart, Facebook, Instagram } from "@mui/icons-material";
-import { Badge, Box, Grid, Typography } from "@mui/material";
-import { ButtonStyled } from "components/styled";
+import { Badge, Grid, Typography } from "@mui/material";
+import { ButtonStyled, HeaderStyled, ImgStyled } from "components/styled";
 import { useBeerContext } from "context";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Header = () => {
   order.forEach((item) => (quantity += item.quantity ?? 0));
 
   return (
-    <Box py={5}>
+    <HeaderStyled py={5}>
       <Grid
         container
         spacing={1}
@@ -43,7 +43,7 @@ const Header = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <img src="./static/logo.png" />
+          <ImgStyled src="/static/logo.png" alt="Logo company" />
         </Grid>
         <Grid item>
           <Grid container spacing={2}>
@@ -64,7 +64,7 @@ const Header = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Box>
+    </HeaderStyled>
   );
 };
 
