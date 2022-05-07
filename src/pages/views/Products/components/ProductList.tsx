@@ -1,4 +1,5 @@
-import { Grid, Skeleton, Box, Stack, Alert, AlertTitle } from "@mui/material";
+import { Grid, Skeleton, Box, Stack } from "@mui/material";
+import { ImgStyled } from "components/styled";
 import { useBeerContext } from "context";
 import ProductListItem from "./ProductListItem";
 
@@ -7,9 +8,11 @@ const ProductList = () => {
 
   return (
     <Grid container spacing={2}>
-      {beerList.map((item) => (
-        <ProductListItem item={item} addToCart={addToCart} key={item.id} />
-      ))}
+      {beerList.length > 0 ? (
+        beerList.map((item) => <ProductListItem item={item} addToCart={addToCart} key={item.id} />)
+      ) : (
+        <ErrorProducts />
+      )}
     </Grid>
   );
 };
@@ -38,8 +41,7 @@ export const LoadingProducts = () => (
 );
 
 export const ErrorProducts = () => (
-  <Alert severity="error" variant="filled">
-    <AlertTitle>Error!</AlertTitle>
-    No se logró obtener la información...
-  </Alert>
+  <Grid item xs={12}>
+    <ImgStyled src="/static/empty.png" />
+  </Grid>
 );

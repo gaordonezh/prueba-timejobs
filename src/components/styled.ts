@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardHeader, Typography } from "@mui/material";
+import { Box, Button, Card, CardHeader, Fab, Grid, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Square, CropSquare } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
@@ -53,4 +53,18 @@ export const HeaderStyled = styled(Box)(({ theme }) => ({
   top: 0,
   zIndex: 2000,
   backgroundColor: "#fff",
+}));
+
+export const ProductContainerStyled = styled(Grid)(({ theme }) => ({
+  width: "calc((100%) - 300px)",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
+}));
+
+export const FabStyled = styled(Fab)(({ theme }) => ({
+  position: "fixed",
+  top: "30%",
+  left: 0,
+  zIndex: 9999,
 }));

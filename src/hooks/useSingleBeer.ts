@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getBeerById } from "requests";
 import { BeerProps } from "interfaces";
 import getPrice from "utils/getPrice";
+import sleep from "utils/sleep";
 
 const useSingleBeer = (beerId: string) => {
   const [singleBeer, setSingleBeer] = useState<BeerProps>({});
@@ -10,6 +11,7 @@ const useSingleBeer = (beerId: string) => {
 
   useEffect(() => {
     obtainSingleBeer();
+    // eslint-disable-next-line
   }, []);
 
   const obtainSingleBeer = async () => {
@@ -19,6 +21,7 @@ const useSingleBeer = (beerId: string) => {
       const res = await getBeerById(beerId);
       const result = res.map((item: BeerProps) => ({ ...item, price: getPrice(item.id) }));
       setSingleBeer(result[0]);
+      await sleep(500);
     } catch (error) {
       setError(true);
     } finally {

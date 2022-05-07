@@ -1,51 +1,29 @@
 import { ArrowLeft } from "@mui/icons-material";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Stack,
-  Typography,
-  Button,
-  FormHelperText,
-  Container,
-} from "@mui/material";
+import { Stack, FormHelperText, Container, Box } from "@mui/material";
+import { ButtonStyled, TextStyled } from "components/styled";
+import { Link } from "react-router-dom";
 
-const Page404 = () => {
-  const handleBack = () => window.history.back();
-
-  return (
-    <Grid container minHeight="100vh" justifyContent="center" alignItems="center">
-      <Grid item textAlign="center">
-        <Grid container minHeight="100vh" justifyContent="center" alignItems="center">
-          <Grid item textAlign="center">
-            <Container maxWidth="xs">
-              <Card elevation={0}>
-                <CardContent>
-                  <Stack direction="column" spacing={5} alignItems="center">
-                    <img src="/static/logo.png" alt="Logo company" style={{ height: 175 }} />
-                    <Typography variant="h5" component="h1" sx={{ maxWidth: 300 }}>
-                      PÁGINA NO ENCONTRADA
-                    </Typography>
-                    <FormHelperText sx={{ textAlign: "justify" }}>
-                      Manipulaste la dirección URL o ingresaste a una dirección inexistente. <br />
-                      Puede continuar solo usando la barra de navegación para una buena experiencia
-                      de usuario. <br />
-                      <br />A continuación dale click en "VOLVER" para continuar...
-                    </FormHelperText>
-
-                    <Button color="info" size="large" variant="contained" onClick={handleBack}>
-                      <ArrowLeft />
-                      VOLVER
-                    </Button>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Container>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
-};
+const Page404 = () => (
+  <Container maxWidth="xs">
+    <Box py={10}>
+      <Stack direction="column" spacing={5} alignItems="center">
+        <TextStyled variant="h1">404</TextStyled>
+        <TextStyled variant="h2">PÁGINA NO ENCONTRADA</TextStyled>
+        <FormHelperText>
+          Manipulaste la dirección URL o ingresaste a una dirección inexistente. <br />
+          Puede continuar solo usando la barra de navegación para una buena experiencia de usuario.{" "}
+          <br />
+          <br />A continuación dale click en "IR A INICIO" para continuar...
+        </FormHelperText>
+        <Link to={{ pathname: "/" }}>
+          <ButtonStyled color="primary" variant="outlined" size="large">
+            <ArrowLeft />
+            IR A INICIO
+          </ButtonStyled>
+        </Link>
+      </Stack>
+    </Box>
+  </Container>
+);
 
 export default Page404;

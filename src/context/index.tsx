@@ -1,12 +1,15 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { ContextProps, BeerProps, OrderProps } from "interfaces";
+import { useLocation } from "react-router-dom";
 
 const Beer = createContext({} as ContextProps);
 
 export const useBeerContext = () => useContext(Beer);
 
 const BeerProvider = ({ children }: { children: ReactNode }) => {
+  const { pathname } = useLocation();
   const [beerList, setBeerList] = useState<Array<BeerProps>>([]);
+  const [DBBeers, setDBBeers] = useState<Array<BeerProps>>([]);
   const [order, setOrder] = useState<Array<OrderProps>>([]);
 
   const addToCart = (data: BeerProps, qty?: number) => () => {
@@ -29,8 +32,14 @@ const BeerProvider = ({ children }: { children: ReactNode }) => {
     setOrder([...order]);
   };
 
+  useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
   return (
-    <Beer.Provider value={{ beerList, setBeerList, order, setOrder, addToCart }}>
+    <Beer.Provider
+      value={{ DBBeers, beerList, setBeerList, setDBBeers, order, setOrder, addToCart }}
+    >
       {children}
     </Beer.Provider>
   );

@@ -60,7 +60,9 @@ export interface OrderProps {
 
 export interface ContextProps {
   beerList: Array<BeerProps>;
+  DBBeers: Array<BeerProps>;
   setBeerList: Function;
+  setDBBeers: Function;
   order: Array<OrderProps>;
   setOrder: Function;
   addToCart: Function;
